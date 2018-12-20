@@ -212,7 +212,7 @@ func main() {
 					SeperateAfter: false,
 				},
 				segment{
-					Text:          fmt.Sprintf("%2.1f%%", cpercent*100),
+					Text:          fmt.Sprintf("%5.1f%%", cpercent*100),
 					Color:         color,
 					SeperateAfter: true,
 				},
@@ -285,11 +285,11 @@ func formatData(v uint64) string {
 	var fmtSize = func(n float64, u string) string {
 		var f string
 		if n > 100 {
-			f = "%3.1f"
+			f = "%5.1f"
 		} else if n > 10 {
-			f = "%2.2f"
+			f = "%5.2f"
 		} else {
-			f = "%1.3f"
+			f = "%5.3f"
 		}
 		return fmt.Sprintf(f+" "+u, n)
 	}
