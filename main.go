@@ -63,6 +63,11 @@ func main() {
 	var netstat *linux.NetStat
 	var oldRx, newRx, oldTx, newTx uint64
 
+	// CPU usage
+	var stat *linux.Stat
+	var oldBusy, newBusy, newIdle, oldIdle uint64
+	var cpercent float64
+
 	// System load
 	var loadAvg *linux.LoadAvg
 
@@ -124,7 +129,7 @@ func main() {
 
 			if mpercent > .9 {
 				color = red
-			} else if dpercent > .7 {
+			} else if mpercent > .75 {
 				color = orange
 			} else {
 				color = green
@@ -174,6 +179,50 @@ func main() {
 				})
 			oldRx = newRx
 			oldTx = newTx
+		}
+
+		// CPU usage
+		stat, err = linux.ReadStat("/proc/stat")
+		if err != nil {
+			segments = append(segments, segment{
+				Text:          "cpu: " + err.Error(),
+				Color:         red,
+				SeperateAfter: true,
+			})
+		} else {
+			newBusy = (stat.CPUStatAll.User +
+				stat.CPUStatAll.Nice +
+				stat.CPUStatAll.System +
+				stat.CPUStatAll.IOWait) - oldBusy
+			newIdle = stat.CPUStatAll.Idle - oldIdle
+			cpercent = float64(newBusy) / float64(newBusy+newIdle)
+
+			if cpercent > .9 {
+				color = red
+			} else if cpercent > .75 {
+				color = orange
+			} else {
+				color = green
+			}
+
+			segments = append(segments,
+				segment{
+					Text:          "cpu",
+					Color:         white,
+					SeperateAfter: false,
+				},
+				segment{
+					Text:          fmt.Sprintf("%2.1f%%", cpercent*100),
+					Color:         color,
+					SeperateAfter: true,
+				},
+			)
+
+			oldBusy = stat.CPUStatAll.User +
+				stat.CPUStatAll.Nice +
+				stat.CPUStatAll.System +
+				stat.CPUStatAll.IOWait
+			oldIdle = stat.CPUStatAll.Idle
 		}
 
 		// System load
