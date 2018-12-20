@@ -4,10 +4,10 @@ Very simple status bar script. Supports these features:
 
 - Used / Total space of root filesystem
 - Used / Total system memory
-- Download speed on all network interfaces
-- Upload speed on all network interfaces
+- Download / Upload speed on all network interfaces
 - System load for 1, 5 and 15 minutes
 - Date and time
+- Colour coding filesystem / memory and load stats based on utilization
 
 And it looks like this:
 
