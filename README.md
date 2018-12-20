@@ -15,3 +15,10 @@ And it looks like this:
 
 I wanted to add spotify controls too, but their D-Bus API is broken _again_.
 I'll get to it when they get their shit together.
+
+## Modifying
+
+The code is incredibly simple and easy to understand. Anyone with basic Go
+knowledge should be able to modify it. If you want more features go ahead and
+fork the project. The statfs library I'm using has support for many more OS
+statistics.
