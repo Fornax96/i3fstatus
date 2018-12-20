@@ -20,5 +20,5 @@ I'll get to it when they get their shit together.
 
 The code is incredibly simple and easy to understand. Anyone with basic Go
 knowledge should be able to modify it. If you want more features go ahead and
-fork the project. The statfs library I'm using has support for many more OS
+fork the project. The procfs library I'm using has support for many more OS
 statistics.
