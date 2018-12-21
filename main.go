@@ -111,7 +111,8 @@ func main() {
 					),
 					Color:         color,
 					SeperateAfter: true,
-				})
+				},
+			)
 		}
 
 		// Memory
@@ -149,7 +150,8 @@ func main() {
 					),
 					Color:         color,
 					SeperateAfter: true,
-				})
+				},
+			)
 		}
 
 		// Network speed
@@ -176,7 +178,8 @@ func main() {
 					),
 					Color:         white,
 					SeperateAfter: true,
-				})
+				},
+			)
 			oldRx = newRx
 			oldTx = newTx
 		}
@@ -255,7 +258,8 @@ func main() {
 					),
 					Color:         color,
 					SeperateAfter: true,
-				})
+				},
+			)
 		}
 
 		// Clock

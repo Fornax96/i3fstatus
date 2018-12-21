@@ -8,7 +8,7 @@ Very simple status bar script. Supports these features:
 - CPU use percentage
 - System load for 1, 5 and 15 minutes
 - Date and time
-- Colour coding filesystem / memory and load stats based on utilization
+- Colour coding filesystem, memory, CPU and load stats based on utilization
 
 And it looks like this:
 
